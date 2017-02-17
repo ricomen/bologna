@@ -333,3 +333,9 @@
   font-weight: @font-weight;
   font-style: @font-style;
 }
+
+// Шрифты + falllback
+.font-size(@sizeValue) {
+  font-size: @sizeValue;
+  font-size: @sizeValue/@font-size + 0rem;
+}
