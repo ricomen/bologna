@@ -1,0 +1,20 @@
+.main-content {
+  float: left;
+  border: 1px solid black;
+  &__layout-columns {    
+    width: 63.84%;    
+    .clearfix();
+    float: left;
+  }
+  &__layout-column {
+    display: inline-block;
+    width: 48.19%;    
+    background-color: rgba(0, 150, 0, 0.5);
+    &--left {
+      float: left;
+    }
+    &--right {
+      float: right;
+    }
+  }
+}

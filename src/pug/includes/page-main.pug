@@ -1,0 +1,33 @@
+main.page-main  
+  .container
+    section.main-content
+      .main-content__layout-columns
+        .main-content__layout-column.main-content__layout-column--left
+          article.post
+            figure.post__img
+              img(src="")
+              figcaption.post__img-description Fashion
+            h2.post__title The Best Beauty Looks: Week of October 13, 2015
+            p.post__short-content There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...
+            time.post__date(pubdate datetime="2015-12-09") Dec 09/2015
+        .main-content__layout-column.main-content__layout-column--right
+          article.post
+            figure.post__img
+              img(src="")
+              figcaption.post__img-description Fashion
+            h2.post__title The Best Beauty Looks: Week of October 13, 2015
+            p.post__short-content There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...
+            time.post__date(pubdate datetime="2015-12-09") Dec 09/2015
+      aside.left-sidebar
+        arcticle.people
+          figure.people__img
+            img
+            figcaption.people__img-descrition About me
+          h2.people__title Mona-Kem
+        .subscribe
+          form.subscribe__form(method="POST")
+            input.subscribe__field(
+                                   type="text"
+                                   name="subscribe"
+                                   placeholder="Your e-mail...")
+            button.subscribe__btn(type="submit") Submit
