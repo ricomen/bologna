@@ -1,20 +1,38 @@
 .main-content {
   float: left;
-  border: 1px solid black;
-  &__layout-columns {    
-    width: 63.84%;    
+  margin-bottom: 100px;
+  &__layout-columns {
+    width: 63.84%;
     .clearfix();
     float: left;
   }
   &__layout-column {
     display: inline-block;
-    width: 48.19%;    
-    background-color: rgba(0, 150, 0, 0.5);
+    width: 48.19%;
     &--left {
       float: left;
     }
     &--right {
       float: right;
+    }
+  }
+  &__reload {    
+    clear: both;    
+    padding-top: 40px;
+    border-top: 2px dashed @text-color;    
+    &-btn {
+      display: block;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: data-uri("../img/icons/icon-load-more.png");   
+      transition: 0.5s ease-in-out;   
+      .center();
+      &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transform: rotate(180deg);
+      }
     }
   }
 }
