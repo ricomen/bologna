@@ -487,6 +487,25 @@ img {
 a {
   text-decoration: none;
 }
+.logo {
+  padding: 45px 0 12px;
+
+  text-align: center;
+
+  border-bottom: 4px solid #fefefe;
+}
+.logo__description {
+  font-size: 12px;
+  font-size: .75rem;
+  font-weight: bold;
+  line-height: 1.1;
+
+  margin: 0;
+
+  text-transform: uppercase;
+
+  color: #898989;
+}
 .main-content {
   float: left;
 

@@ -10,6 +10,7 @@ var imagemin     = require('gulp-imagemin');     // Подключаем биб�
 var pngquant     = require('imagemin-pngquant'); // Подключаем библиотеку для работы с png
 var cache        = require('gulp-cache');        // Подключаем библиотеку кеширования
 var autoprefixer = require('gulp-autoprefixer'); // Подключаем библиотеку для автоматического добавления префиксов
+var plumber      = require('gulp-plumber');
 var csscomb      = require('gulp-csscomb');      // Причесываем CSS
 var spritesmith  = require('gulp.spritesmith');  // Собираем спрайт 
 var smartgrid    = require('smart-grid');        // Сетка Smart-grid
@@ -28,16 +29,14 @@ gulp.task('pug', function() {
         .pipe(gulp.dest('src/'))
 });
 
-gulp.task('less', function() {
-    gulp.src('src/less//style.less')
-        .pipe(less().on( "error", notify.onError({
-          message: "<%= error.message %>",
-          title  : "Less Error!"
-          }))) 
-        .pipe(autoprefixer(['last 4 versions'], { cascade: true })) 
-        .pipe(csscomb())
-        .pipe(gulp.dest('src/css'))
-        .pipe(browserSync.reload({stream: true}))
+gulp.task('less', function() {                  // Создаем таск Less
+    gulp.src('src/less/style.less')             // Берем источник
+        .pipe(plumber())                        //Слушаем ошибки
+        .pipe(less())                           // Преобразуем less в CSS посредством gulp-less
+        .pipe(autoprefixer(['last 4 versions'], { cascade: true })) // Создаем префиксы
+        .pipe(csscomb())                        // Причесываем CSS
+        .pipe(gulp.dest('src/css')) // Выгружаем результат в папку src/css
+        .pipe(browserSync.reload({stream: true})) // Обновляем CSS на странице при изменении
 });
 
 gulp.task('sprite', function () {
