@@ -629,8 +629,81 @@ a {
   float: right;
 
   width: 26.15%;
+}
+.about-user {
+  margin-bottom: 20%;
+}
+.about-user__img {
+  margin: 0;
+  margin-bottom: 10px;
+}
+.about-user__img img {
+  display: block;
 
-  background-color: rgba(0, 150, 0, .5);
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 5%;
+}
+.about-user__img-description {
+  font-size: 12px;
+  font-size: .75rem;
+  font-style: italic;
+  line-height: 1.2;
+
+  position: relative;
+
+  display: inline-block;
+
+  padding: 10px 10px 5px;
+
+  vertical-align: top;
+
+  color: #898989;
+}
+.about-user__img-description::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1.5px;
+
+  content: "";
+
+  background-color: #898989;
+}
+.about-user__title {
+  font-family: "Rufina", "Times New Roman", serif;
+  font-size: 36px;
+  font-size: 2.25rem;
+  line-height: 1.3;
+
+  margin: 0;
+}
+.about-user__content {
+  font-size: 13px;
+  font-size: .8125rem;
+  line-height: 1.3;
+
+  color: #898989;
+}
+.about-user__follow {
+  font-size: 12px;
+  font-size: .75rem;
+  line-height: 1.2;
+
+  color: #898989;
+}
+.about-user__follow-link {
+  display: inline-block;
+
+  width: 15px;
+  height: 15px;
+
+  vertical-align: middle;
+
+  color: #000;
+  background-color: red;
 }
 .post {
   margin-bottom: 20%;
