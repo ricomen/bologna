@@ -13,12 +13,40 @@ var autoprefixer = require('gulp-autoprefixer'); // Подключаем биб�
 var plumber      = require('gulp-plumber');
 var csscomb      = require('gulp-csscomb');      // Причесываем CSS
 var spritesmith  = require('gulp.spritesmith');  // Собираем спрайт 
+var svgSprite    = require('gulp-svg-sprites');
+var svgmin       = require('gulp-svgmin');
+var cheerio      = require('gulp-cheerio');
+var replace      = require('gulp-replace');
 var smartgrid    = require('smart-grid');        // Сетка Smart-grid
 var pug          = require('gulp-pug2');
 var notify       = require('gulp-notify');
 /*var emitty       = require('emitty').setup('src/pug', 'pug', {
   makeVinylFile: true
 });*/
+
+gulp.task('svgSprite', function () {
+  return gulp.src('src/img/icons/svg/*.svg')
+    // minify svg
+    .pipe(svgmin({
+      js2svg: {
+        pretty: true
+      }
+    }))
+    // cheerio plugin create unnecessary string '>', so replace it.
+    .pipe(replace('&gt;', '>'))
+    // build svg sprite
+      .pipe(svgSprite({mode: "symbols"}))
+      .pipe(svgSprite({
+            svg: {
+                sprite: "svg-sprite.svg"
+            },
+            preview: {
+                sprite: "index.html"
+            },
+            cssFile: "../../less/blocks/sprite.css"
+        }))
+    .pipe(gulp.dest('src/img/svg/'));
+});
 
 gulp.task('pug', function() {
     return gulp.src('src/pug/*.pug')       
@@ -28,6 +56,7 @@ gulp.task('pug', function() {
           })))
         .pipe(gulp.dest('src/'))
 });
+
 
 gulp.task('less', function() {                  // Создаем таск Less
     gulp.src('src/less/style.less')             // Берем источник

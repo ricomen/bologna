@@ -633,7 +633,7 @@ a {
   background-color: rgba(0, 150, 0, .5);
 }
 .post {
-  margin-bottom: 80px;
+  margin-bottom: 20%;
 
   text-align: center;
 }
@@ -646,7 +646,7 @@ a {
 
   max-width: 100%;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 5%;
 }
 .post__img-description {
   font-size: 12px;
@@ -699,8 +699,58 @@ a {
 .post__date span {
   color: #898989;
 }
+.subscribe {
+  margin-bottom: 17%;
+  padding: 18% 6%;
+
+  background-color: #f5f5f5;
+}
+.subscribe__title {
+  font-family: "Rifina", "Times New Roman", serif;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.1;
+
+  margin-bottom: 6.25%;
+}
 .subscribe__form {
-  background-color: red;
+  position: relative;
+}
+.subscribe__form-field {
+  font-size: 12px;
+  font-size: .75rem;
+  font-style: italic;
+  line-height: 1.1;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 90px 10px 20px;
+
+  border: 1px solid #898989;
+  outline: none;
+}
+.subscribe__btn {
+  font-family: "Quattrocento Sans", "Arial", sans-serif;
+  font-size: 12px;
+  font-size: .75rem;
+  line-height: 1.1;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  height: 100%;
+
+  cursor: pointer;
+  transition: background .3s ease-in;
+
+  color: #fff;
+  border: none;
+  outline: none;
+  background-color: #000;
+}
+.subscribe__btn:hover {
+  background-color: #666;
 }
 .page-footer__columns:before,
 .page-footer__columns:after {
