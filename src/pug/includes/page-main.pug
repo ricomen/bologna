@@ -70,9 +70,14 @@ main.page-main
         .main-content__reload
           a.main-content__reload-btn(href="#")            
       aside.sidebar
-        arcticle.people
-          figure.people__img
-            img
-            figcaption.people__img-descrition About me
-          h2.people__title Mona-Kem
+        article.about-user
+          figure.about-user__img
+            img(src="../img/content/user-1.jpg")
+            figcaption.about-user__img-description About me
+          h2.about-user__title Mona-Kim
+          p.about-user__content The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum"
+          .about-user__follow Follow
+            a.about-user__follow-link(href="ru.linkedin.com") Линк ид
+            a.about-user__follow-link(href="twitter.com") twiter
+            a.about-user__follow-link(href="facebook.com") facebook
         +subscribe("Submit", "Your e-mail...", "POST")
