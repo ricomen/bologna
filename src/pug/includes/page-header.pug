@@ -10,38 +10,39 @@ header.page-header
         path(d="M198.63,11.23v23h-1.49L174.54,5.71V23.09A38.77,38.77,0,0,0,175,30a4.23,4.23,0,0,0,1.44,2.78,6.17,6.17,0,0,0,3.31.67l.1.58H168l.1-.58a6.17,6.17,0,0,0,3.31-.67A4.31,4.31,0,0,0,172.88,30a36.7,36.7,0,0,0,.46-6.91V11.23a36.29,36.29,0,0,0-.46-6.89,4.24,4.24,0,0,0-1.44-2.74A6.35,6.35,0,0,0,168.1,1L168,.43h6.53L197.43,29V11.23A36.34,36.34,0,0,0,197,4.37a4.2,4.2,0,0,0-1.46-2.76A6.49,6.49,0,0,0,192.15,1l-.1-.53H204l-.1.53a6.49,6.49,0,0,0-3.36.65,4.13,4.13,0,0,0-1.44,2.76A38.29,38.29,0,0,0,198.63,11.23Z")
         path(d="M229.67,33.18q.74-.29.74-1.49t-2.54-8.16H213.22q-2.07,6.1-2.06,7.66t.79,1.92a7.75,7.75,0,0,0,2.86.36l.1.58H204.1l.1-.58a7.81,7.81,0,0,0,2.18-.24A4.15,4.15,0,0,0,208.11,32a11.19,11.19,0,0,0,1.8-3q.86-2,2.06-5.52l4.27-12.34q2.25-6.53,2.26-7.92t-.67-1.8A5.57,5.57,0,0,0,215.24,1l-.1-.53h7.92l8.5,23q2.16,5.71,2.9,7.25a4.88,4.88,0,0,0,1.42,2,5.25,5.25,0,0,0,3,.82l.1.58H227l.1-.58A7.94,7.94,0,0,0,229.67,33.18ZM220.38,3l-6.77,19.35h13.87Z")
       p.logo__description Awordpress theme for bloggers  
-  .page-header__columns
-    .page-header__column
-      section.social
-        a.social__link(href="#")
-          +icon("behance", 15)
-        a.social__link(href="#")
-          +icon("facebook", 15)
-        a.social__link(href="#")
-          +icon("linkedin", 15)
-        a.social__link(href="#")
-          +icon("pinterest", 15)
-    .page-header__column
-      nav.main-nav
-        ul.main-nav__list
-          li.main-nav__item
-            a.main-nav__link Home
-          li.main-nav__item
-            a.main-nav__link Posttypes
-          li.main-nav__item
-            a.main-nav__link Features
-          li.main-nav__item
-            a.main-nav__link Pages
-          li.main-nav__item
-            a.main-nav__link Categories
-          li.main-nav__item
-            a.main-nav__link Contact
-    .page-header__column
-      .search
-        form.search__form
-          input.search__field  
-    .slider
-      .slider__item
-        .container
-          a.slider__item-btn(href="#") My Life
-          p.slider__item-description These beauty queens are fighting<br> for transgender rights
+  .page-header__nav
+    section.social
+      a.social__link(href="#")
+        +icon("behance", 15)
+      a.social__link(href="#")
+        +icon("facebook", 15)
+      a.social__link(href="#")
+        +icon("linkedin", 15)
+      a.social__link(href="#")
+        +icon("pinterest", 15)
+  
+    nav.main-nav
+      ul.main-nav__list
+        li.main-nav__item
+          a.main-nav__link(href="#") Home
+        li.main-nav__item
+          a.main-nav__link(href="#") Posttypes
+        li.main-nav__item
+          a.main-nav__link(href="#") Features
+        li.main-nav__item
+          a.main-nav__link(href="#") Pages
+        li.main-nav__item
+          a.main-nav__link(href="#") Categories
+        li.main-nav__item
+          a.main-nav__link(href="#") Contact
+  
+    .search
+      form.search__form
+        input.search__form-field(action="/" method="GET")
+        button.search__form-btn(type="submit")
+          +icon("search", 15)
+  .slider
+    .slider__item
+      .container
+        a.slider__item-btn(href="#") My Life
+        p.slider__item-description These beauty queens are fighting<br> for transgender rights

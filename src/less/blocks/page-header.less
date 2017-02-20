@@ -1,3 +1,34 @@
 .page-header {
   margin-bottom: 90px;
+  &__nav {
+    padding: 0 2.6%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.search__form {
+  &-field {
+    border: none;
+    ouline: none;
+    border-right: 2px solid #000;
+    color: #000;
+    font-style: italic;
+    &:focus {
+      outline: none;
+      border: none;      
+      border-bottom: 1px solid #ccc;
+
+    }
+  }
+  &-btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;    
+    transition: 0.3s ease-in-out;
+    &:hover {
+      fill: lighten(#000, 40%);
+    }
+  }
 }

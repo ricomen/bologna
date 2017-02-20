@@ -4,8 +4,7 @@
   var instaBlock = document.querySelectorAll(".instagram__img"); 
 
  for( i = 0; i < instaBlock.length; i++) {
-    var j = ( Math.round ( Math.random() * (instaBlock.length - 1) + 1 ));
-    console.log(j);
+    var j = ( Math.round ( Math.random() * (instaBlock.length - 1) + 1 ));    
     var imgPath = "url(\"../img/inst/img-" + j + ".jpg\")";
     instaBlock[i].style.backgroundImage = imgPath;   
   }  
