@@ -457,6 +457,20 @@ template {
 
   src: url("../fonts/Quattrocento Sans/quattrocentosansitalic.woff") format("woff"), url("../fonts/Quattrocento Sans/quattrocentosansitalic.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Rufina";
+  font-weight: 700;
+  font-style: normal;
+
+  src: url("../fonts/Rufina/Rufina-Bold.woff") format("woff"), url("../fonts/Rufina/Rufina-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Rufina";
+  font-weight: 400;
+  font-style: normal;
+
+  src: url("../fonts/Rufina/Rufina-Regular.woff") format("woff"), url("../fonts/Rufina/Rufina-Regular.woff2") format("woff2");
+}
 html {
   font-size: 16px;
   line-height: 1.3;
