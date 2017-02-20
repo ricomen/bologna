@@ -85,7 +85,7 @@ main.page-main
             a.about-user__follow-link(href="facebook.com")
               +icon("facebook", 15)
         +subscribe("Submit", "Your e-mail...", "POST")
-        section.latest-posts
+        section.latest-post
           h2.latest-post__title Latest posts
           .latest-post__item
             span.latest-post__item-category Beauty
@@ -99,14 +99,67 @@ main.page-main
             span.latest-post__item-category My life
             h2.latest-post__item-title The Your Horoscope For This Week
             time.latest-post__item-date(pubdate datetime="2015-11-25") Nov 25<span>/2015</span>
-          section.instagram-widget
-            h2.instagram-widget__title
-            .instagram-widget__images
-              a.instagram-widget__link(href="#")
-                  img(src="img/inst/sidebar/inst-1.jpg" width="" height="")
-              a.instagram-widget__link(href="#")                
-                  img(src="img/inst/sidebar/inst-2.jpg" width="" height="")
-              a.instagram-widget__link(href="#")                
-                  img(src="img/inst/sidebar/inst-3.jpg" width="" height="")
-              a.instagram-widget__link(href="#")                
-                  img(src="img/inst/sidebar/inst-4.jpg" width="" height="")
+        section.instagram-widget
+          h2.instagram-widget__title Instagram
+          .instagram-widget__images
+            a.instagram-widget__link(href="#")
+                img(src="img/inst/sidebar/inst-1.jpg" width="" height="")
+            a.instagram-widget__link(href="#")                
+                img(src="img/inst/sidebar/inst-2.jpg" width="" height="")
+            a.instagram-widget__link(href="#")                
+                img(src="img/inst/sidebar/inst-3.jpg" width="" height="")
+            a.instagram-widget__link(href="#")                
+                img(src="img/inst/sidebar/inst-4.jpg" width="" height="")
+        section.categories
+          h2.categories__title Categories
+          ul.categories__list
+            li.categories__item Decor
+            li.categories__item Fashion
+            li.categories__item Lifestyle
+            li.categories__item Travel
+            li.categories__item Mylife
+            li.categories__item MakeUp
+            li.categories__item Beauty
+        section.banner
+          a.banner__link
+            img(src="img/banner.jpg" href="#")
+        section.tags
+          h2.tags__title Tags
+          ul.tags__list
+            li.tags__item
+              a.tags__link(href="#") blog
+            li.tags__item
+              a.tags__link(href="#") fashion
+            li.tags__item
+              a.tags__link(href="#") gallery
+            li.tags__item
+              a.tags__link(href="#") happiness
+            li.tags__item
+              a.tags__link(href="#") bloginspiration
+            li.tags__item
+              a.tags__link(href="#") lifestyle
+            li.tags__item
+              a.tags__link(href="#") living
+            li.tags__item
+              a.tags__link(href="#") love
+            li.tags__item
+              a.tags__link(href="#") sea
+            li.tags__item
+              a.tags__link(href="#") story
+            li.tags__item
+              a.tags__link(href="#") summertime
+            li.tags__item
+              a.tags__link(href="#") blogtravel
+  section.instagram
+    h2.instagram__title Instagram    
+    .instagram__columns
+      .instagram__column.instagram__column--left
+        .instagram__img
+        .instagram__img.instagram__img--big
+        .instagram__img
+      .instagram__column.instagram__column--right
+        .instagram__img.instagram__img--rectangle
+        .instagram__img
+        .instagram__img
+        .instagram__img
+        .instagram__img

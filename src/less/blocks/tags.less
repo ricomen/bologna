@@ -1,0 +1,43 @@
+.tags {
+  margin-bottom: 30px;
+  &__title {
+    margin: 0;
+    margin-bottom: 30px;
+    padding-bottom: 10px;    
+    font-family: "Rufina", "Times New Roman", serif;
+    .font-size(24px);
+    line-height: 1.2;
+    color: #000;
+    border-bottom: 1px solid @text-color;
+  }
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__item {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    .font-size(16px);
+    line-height: 1.2;
+    padding: 5px 20px 5px 0px;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      .font-size(25px);
+      content: "/";
+      color: @text-color;
+    }
+    &:last-child:after {
+      content: none;
+    }
+  }
+  &__link {
+    color: #000;    
+    &:hover {
+      font-weight: bold;
+    }
+  }
+}
