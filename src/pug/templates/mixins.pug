@@ -16,7 +16,10 @@ mixin post()
     p.post__short-content There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...
     time.post__date(pubdate datetime="2015-12-09") Dec 09/2015
 
-mixin icon(name ,mod)
+
+mixin icon(name , size, mod)
   - mod = mod || ''
-  svg(class="icon icon-" + name + ' ' + mod)
+  svg(width=size height=size class="icon icon-" + name + ' ' + mod data-img="img/icons/icon-" + name + ".png")
     use(xlink:href="#icon-" + name)
+  noscript
+    img(src="img/icons/icon-" + name + ".png" alt="icon" width=size height=size)

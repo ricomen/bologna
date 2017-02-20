@@ -510,6 +510,21 @@ a {
 .main-nav__item:last-child {
   margin-right: 0;
 }
+.social__link {
+  display: inline-block;
+
+  margin-right: 10px;
+
+  transition: .2s ease-in;
+  vertical-align: middle;
+}
+.social__link:hover {
+  -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+
+  opacity: .5;
+}
 .logo {
   padding: 45px 0 12px;
 
@@ -687,23 +702,27 @@ a {
 
   color: #898989;
 }
-.about-user__follow {
+.about-user__follow span {
   font-size: 12px;
   font-size: .75rem;
   line-height: 1.2;
+
+  margin-right: 10px;
 
   color: #898989;
 }
 .about-user__follow-link {
   display: inline-block;
 
-  width: 15px;
-  height: 15px;
+  margin-right: 10px;
 
+  transition: opacity .2s ease-in;
   vertical-align: middle;
 
   color: #000;
-  background-color: red;
+}
+.about-user__follow-link:hover {
+  opacity: .5;
 }
 .post {
   margin-bottom: 20%;

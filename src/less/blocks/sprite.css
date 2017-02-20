@@ -8,12 +8,39 @@
     display: inline-block;
     background-image: url("../svg-sprite.svg");
     background-repeat: no-repeat;
-    background-size: 0em 0em;
+    background-size: 45.0048em 127.2em;
 }
 
 .no-svg .icon:before {
     background-image: url("../svg-sprite.png");
 }
+
+
+
+  .icon.clutch:before {
+      background-position: 0em 0em;
+      width: 38.912em;
+      height: 38.912em;
+  }
+
+
+
+
+  .icon.steering-wheel:before {
+      background-position: 0em -39em;
+      width: 43.007999999999996em;
+      height: 43.007999999999996em;
+  }
+
+
+
+
+  .icon.timing-belt:before {
+      background-position: 0em -82.1em;
+      width: 45.0048em;
+      height: 45.0048em;
+  }
+
 
 
 
