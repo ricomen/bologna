@@ -777,6 +777,20 @@ a {
 .latest-post__item-date span {
   color: #898989;
 }
+.instagram-widget {
+  font-size: 0;
+}
+.instagram-widget__link {
+  display: inline-block;
+
+  width: 50%;
+}
+.instagram-widget__link img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+}
 .post {
   margin-bottom: 20%;
 
