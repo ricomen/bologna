@@ -724,6 +724,59 @@ a {
 .about-user__follow-link:hover {
   opacity: .5;
 }
+.latest-post__title {
+  font-family: "Rufina", "Times New Roman", serif;
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+
+  margin: 0;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+
+  color: #000;
+  border-bottom: 1px solid #898989;
+}
+.latest-post__item {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.latest-post__item-category {
+  font-size: 12px;
+  font-size: .75rem;
+  font-style: italic;
+  line-height: 1.2;
+
+  position: relative;
+
+  color: #898989;
+}
+.latest-post__item-category::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1.5px;
+
+  content: "";
+
+  background-color: #898989;
+}
+.latest-post__item-title {
+  font-family: "Rufina", "Times New Roman", serif;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+.latest-post__item-date {
+  font-size: 13px;
+  font-size: .8125rem;
+  line-height: 1.3;
+}
+.latest-post__item-date span {
+  color: #898989;
+}
 .post {
   margin-bottom: 20%;
 
