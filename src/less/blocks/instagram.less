@@ -41,9 +41,17 @@
     box-sizing: border-box;
     &--left {
       float: left;
+      @media @phone {
+        float:none;
+        width: auto;
+      }
     }
     &--right {
       float: right;
+      @media @phone {
+        float:none;
+        width: auto;
+      }
     }
   }
   &__img {

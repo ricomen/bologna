@@ -24,7 +24,7 @@ header.page-header
     nav.main-nav
       ul.main-nav__list
         li.main-nav__item
-          a.main-nav__link(href="#") Home
+          a.main-nav__link.main-nav__link--active() Home
         li.main-nav__item
           a.main-nav__link(href="#") Posttypes
         li.main-nav__item
@@ -41,8 +41,10 @@ header.page-header
         input.search__form-field(action="/" method="GET")
         button.search__form-btn(type="submit")
           +icon("search", 15)
-  .slider
+  .slider-slider
     .slider__item
-      .container
-        a.slider__item-btn(href="#") My Life
-        p.slider__item-description These beauty queens are fighting<br> for transgender rights
+      a.slider__item-btn(href="#") My Life
+      p.slider__item-description These beauty queens are fighting<br> for transgender rights
+    .slider__item
+      a.slider__item-btn(href="#") My Life
+      p.slider__item-description These beauty queens are fighting<br> for transgender rights

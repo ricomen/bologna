@@ -1,32 +1,47 @@
 .main-content {
   float: left;
   margin-bottom: 100px;
+  @media @phone {
+    float: none;
+  }
   &__layout-columns {
     width: 63.84%;
     .clearfix();
     float: left;
+    @media @phone {
+      width: auto;
+      margin-bottom: 20px;
+    }
   }
   &__layout-column {
     display: inline-block;
     width: 48.19%;
     &--left {
       float: left;
+      @media @phone {
+        float: none;
+        width: auto;
+      }
     }
     &--right {
       float: right;
+      @media @phone {
+        float: none;
+        width: auto;
+      }
     }
   }
   &__reload {    
     clear: both;    
     padding-top: 40px;
-    border-top: 2px dashed @text-color;    
+    border-top: 2px dashed @text-color;
     &-btn {
       display: block;
       width: 44px;
       height: 44px;
       border-radius: 50%;
       overflow: hidden;
-      background: data-uri("../img/icons/icon-load-more.png");   
+      background: data-uri("../img/icons/icon-load-more.png");
       transition: 0.5s ease-in-out;   
       .center();
       &:hover {
