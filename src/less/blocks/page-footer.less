@@ -4,8 +4,9 @@
   }
   &__column {
     padding-top: 60px;
-    width: 45.31%;
+    width: 50%;
     min-height: 120px;
+    box-sizing: border-box;
     @media @tablet {
       padding-top: 10px;
       min-height: 100px;
@@ -13,11 +14,11 @@
 
     &--left {
       float: left;
-      padding-left: 4.68%;
+      padding-right: 4.68%;
       background-color: #f7f7f7;
       text-align: right;
       @media @tablet {
-
+       padding-left: 4.68%;       
       }
  
     }
@@ -25,10 +26,6 @@
       float: right;
       padding-left: 4.68%;
       background-color: #ededeb;
-      @media @tablet {
-
-      }
-
     }
   }
   &__copyright {

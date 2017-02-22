@@ -1543,7 +1543,8 @@ a {
   clear: both;
 }
 .page-footer__column {
-  width: 45.31%;
+  box-sizing: border-box;
+  width: 50%;
   min-height: 120px;
   padding-top: 60px;
 }
@@ -1556,11 +1557,16 @@ a {
 .page-footer__column--left {
   float: left;
 
-  padding-left: 4.68%;
+  padding-right: 4.68%;
 
   text-align: right;
 
   background-color: #f7f7f7;
+}
+@media (max-width: 992px) {
+  .page-footer__column--left {
+    padding-left: 4.68%;
+  }
 }
 .page-footer__column--right {
   float: right;
