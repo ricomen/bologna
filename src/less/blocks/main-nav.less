@@ -1,9 +1,27 @@
 .main-nav {
   margin-bottom: 30px;
+  
+  @media @tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    &--closed  &__list {
+      display: none;    
+    }
+    &--nojs &__list{
+      display: block;
+    }
+  }
   &__list {
     margin: 0;
     padding: 0;
     list-style: none;
+    @media @tablet {
+      background-color: #fff;
+    }
   }
   &__item {
     .font-size(14px);
@@ -11,6 +29,11 @@
     text-transform: uppercase;
     float: left;
     margin-right: 38px;
+    @media @tablet {
+      float: none;
+      margin-right: 0;
+      padding: 10px 0;
+    }
     &:last-child {
       margin-right: 0;
     }
@@ -23,6 +46,15 @@
     }
     &--active {
       text-decoration: underline;
+    }
+  }
+  &__toggle {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    @media @tablet {
+      display: block;
     }
   }
 }

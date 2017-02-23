@@ -526,13 +526,20 @@ a {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.search__form {
+  position: relative;
 }
 .search__form-field {
   font-style: italic;
 
+  padding-right: 25px;
+
   color: #000;
   border: none;
-  border-right: 2px solid #000;
 
   ouline: none;
 }
@@ -542,10 +549,15 @@ a {
   outline: none;
 }
 .search__form-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+
   cursor: pointer;
   transition: .3s ease-in-out;
 
   border: none;
+  border-left: 2px solid #000;
   outline: none;
   background: transparent;
 }
@@ -555,11 +567,34 @@ a {
 .main-nav {
   margin-bottom: 30px;
 }
+@media (max-width: 992px) {
+  .main-nav {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+  }
+  .main-nav--closed .main-nav__list {
+    display: none;
+  }
+  .main-nav--nojs .main-nav__list {
+    display: block;
+  }
+}
 .main-nav__list {
   margin: 0;
   padding: 0;
 
   list-style: none;
+}
+@media (max-width: 992px) {
+  .main-nav__list {
+    background-color: #fff;
+  }
 }
 .main-nav__item {
   font-size: 14px;
@@ -571,6 +606,14 @@ a {
   margin-right: 38px;
 
   text-transform: uppercase;
+}
+@media (max-width: 992px) {
+  .main-nav__item {
+    float: none;
+
+    margin-right: 0;
+    padding: 10px 0;
+  }
 }
 .main-nav__item:last-child {
   margin-right: 0;
@@ -584,6 +627,18 @@ a {
 }
 .main-nav__link--active {
   text-decoration: underline;
+}
+.main-nav__toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: none;
+}
+@media (max-width: 992px) {
+  .main-nav__toggle {
+    display: block;
+  }
 }
 .social__link {
   display: inline-block;
@@ -1387,6 +1442,11 @@ a {
 
   margin-bottom: 30px;
 }
+@media (max-width: 992px) {
+  .instagram-widget {
+    display: none;
+  }
+}
 .instagram-widget__title {
   font-family: "Rufina", "Times New Roman", serif;
   font-size: 24px;
@@ -1546,7 +1606,7 @@ a {
   box-sizing: border-box;
   width: 50%;
   min-height: 120px;
-  padding-top: 60px;
+  padding-top: 50px;
 }
 @media (max-width: 992px) {
   .page-footer__column {

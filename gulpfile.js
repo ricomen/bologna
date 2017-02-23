@@ -10,23 +10,61 @@ var imagemin       = require('gulp-imagemin');     // Подключаем би�
 var pngquant       = require('imagemin-pngquant'); // Подключаем библиотеку для работы с png
 var cache          = require('gulp-cache');        // Подключаем библиотеку кеширования
 var autoprefixer   = require('gulp-autoprefixer'); // Подключаем библиотеку для автоматического добавления префиксов
-var plumber        = require('gulp-plumber');
+var plumber        = require('gulp-plumber');      // Выводим ошибки не останавливая поток
 var csscomb        = require('gulp-csscomb');      // Причесываем CSS
 var spritesmith    = require('gulp.spritesmith');  // Собираем спрайт 
-var svgstore       = require('gulp-svgstore');
-var svgmin         = require('gulp-svgmin');
-var cheerio        = require('gulp-cheerio');
+var svgstore       = require('gulp-svgstore');     // Сборщик спрайта
+var svgmin         = require('gulp-svgmin');       // Минифицируем SVG
+var cheerio        = require('gulp-cheerio');      // Добавление атрибутоп...
 var replace        = require('gulp-replace');
 var smartgrid      = require('smart-grid');        // Сетка Smart-grid
-var pug            = require('gulp-pug2');
-var notify         = require('gulp-notify');
+var pug            = require('gulp-pug2');         // Шаблонизатор PUG
+var eslint         = require('gulp-eslint');       // ES-Linter
+var notify         = require('gulp-notify');       // Вывод уведомлений
 /*var emitty       = require('emitty').setup('src/pug', 'pug', {
   makeVinylFile: true
 });*/
 
+//ES-Linter
+gulp.task('lint', function () {
+  return gulp.src(['src/js/main.js','!node_modules/**'])
+  .pipe(eslint({
+    rules: {
+      'no-alert': 0,
+      'no-bitwise': 0,
+      'camelcase': 1,
+      'curly': 1,
+      'eqeqeq': 0,
+      'no-eq-null': 0,
+      'guard-for-in': 1,
+      'no-empty': 1,
+      'no-use-before-define': 0,
+      'no-obj-calls': 2,
+      'no-unused-vars': 0,
+      'new-cap': 1,
+      'no-shadow': 0,
+      'strict': 2,
+      'no-invalid-regexp': 2,
+      'comma-dangle': 2,
+      'no-undef': 1,
+      'no-new': 1,
+      'no-extra-semi': 1,
+      'no-debugger': 2,
+      'no-caller': 1,
+      'semi': 1,
+      'quotes': 0,
+      'no-unreachable': 2
+    },
+    globals: ['$'],
+    envs: ['node']
+    }))
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
+});
+
+//SVG-спрайт(собирает спрайт и кидает в корень img с расширением HTML)
 gulp.task('svgSprite', function () {
-  return gulp.src('src/img/svg/*.svg')
-    // minify svg
+  return gulp.src('src/img/svg/*.svg')    
     .pipe(svgmin(function (file) {
       return {
         plugins: [{
@@ -40,7 +78,7 @@ gulp.task('svgSprite', function () {
     .pipe(svgstore({ inlineSvg: true }))
     .pipe(cheerio({
       run: function ($) {
-          $('svg').attr('style', 'display:none;'); 
+          $('svg').attr('style', 'display:none;');
         },
           parserOptions: { xmlMode: true }
     }))    
@@ -48,9 +86,9 @@ gulp.task('svgSprite', function () {
     .pipe(gulp.dest('src/img/'));
 });
 
+//Шаблонизатор
 gulp.task('pug', function() {
   return gulp.src('src/pug/*.pug')
-    
     .pipe(pug({}).on( "error", notify.onError({
       message: "<%= error.message %>",
       title  : "Pug Error!"
@@ -58,103 +96,116 @@ gulp.task('pug', function() {
     .pipe(gulp.dest('src/'))
 });
 
-gulp.task('less', function() {                  // Создаем таск Less
-  gulp.src('src/less/style.less')    
-    .pipe(plumber())                        //Слушаем ошибки
-    .pipe(less())                           // Преобразуем less в CSS посредством gulp-less
-    .pipe(autoprefixer(['last 4 versions'], { cascade: true })) // Создаем префиксы
-    .pipe(csscomb())                        // Причесываем CSS
-    .pipe(gulp.dest('src/css')) // Выгружаем результат в папку src/css
-    .pipe(browserSync.reload({stream: true})) // Обновляем CSS на странице при изменении
+//LESS-препроцессор
+gulp.task('less', function() {
+  gulp.src('src/less/style.less')
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(less())
+    .pipe(autoprefixer(['last 4 versions'], { cascade: true }))
+    .pipe(csscomb())
+    .pipe(gulp.dest('src/css'))
+    
 });
 
+//PNG-спрайт(кидает в корень img + css в less/blocks)
 gulp.task('sprite', function () {
   var spriteData = gulp.src('src/img/icons/*.png')
   .pipe(spritesmith({
-    imgName: '../img/sprite.png',      //Имя спрайта
-    cssName: 'sprite.css',     // Имя  файла стилей
-    cssFormat: 'css',          // Указал формат
-    algorithm: 'top-down',      // Направление сверху вниз
-    padding: 10                 // Отступ от картинки
+    imgName: '../img/sprite.png',
+    cssName: 'sprite.css',
+    cssFormat: 'css',
+    algorithm: 'top-down',
+    padding: 10
   }));
-  spriteData.img.pipe(gulp.dest('src/img/')); //Путь к спрайту
-  spriteData.css.pipe(gulp.dest('src/less/')); //Путь к Less
+  spriteData.img.pipe(gulp.dest('src/img/'));
+  spriteData.css.pipe(gulp.dest('src/less/'));
 });
 
-gulp.task('browser-sync', function() { // Создаем таск browser-sync
-  browserSync({                      // Выполняем browserSync
-      server: {                      // Определяем параметры сервера
-          baseDir: 'src'             // Директория для сервера - src
+//Browser-sync
+gulp.task('browser-sync', function() {
+  browserSync({
+      server: {
+          baseDir: 'src'
       },
-      notify: false                  // Отключаем уведомления
+      notify: false
   });
 });
 
+//Собираем, углифицирцем скрипты
 gulp.task('scripts', function() {
-  return gulp.src([                     // Берем все необходимые библиотеки
-    'src/js/libs/jquery/dist/jquery.min.js', // Берем jQuery
-    'src/js/libs/magnific-popup/dist/jquery.magnific-popup.min.js' // Берем Magnific Popup
+  return gulp.src([
+    'src/js/libs/jquery/dist/jquery.min.js',
+    'src/js/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
+    'node_modules/html5shiv/disthtml5shiv.min.js',
+    'node_modules/es5-shim/es5-sham.min.js'
     ])
-    .pipe(concat('libs.min.js'))      // Собираем их в кучу в новом файле libs.min.js
-    .pipe(uglify())                   // Сжимаем JS файл
-    .pipe(gulp.dest('src/js'));       // Выгружаем в папку src/js
+    .pipe(concat('libs.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('src/js'));
 });
 
+//Минимизируем css, добавляем префикс min
 gulp.task('css-libs', ['less'], function() {
-  return gulp.src('src/css/style.css')  // Выбираем файл для минификации
-      .pipe(cssnano())                  // Сжимаем
-      .pipe(rename({suffix: '.min'}))   // Добавляем суффикс .min
-      .pipe(gulp.dest('src/css'));      // Выгружаем в папку src/css
+  return gulp.src('src/css/style.css')
+      .pipe(cssnano())
+      .pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest('src/css'));
 });
 
-gulp.task('watch', ['browser-sync', 'css-libs', 'scripts'], function() {  
-  gulp.watch('src/less/**/*.less', ['less']);      // Наблюдение за less файлами в папке less
-  gulp.watch('src/pug/**/*.pug', ['pug']);         // Наблюдение за pug файлами в папке slm
-  gulp.watch('src/*.html', browserSync.reload);    // Наблюдение за HTML файлами в корне проекта
-  gulp.watch('src/css/*.css', browserSync.reload); // Наблюдение за CSS файлами в корне проекта
-  gulp.watch('src/js/**/*.js', browserSync.reload);// Наблюдение за JS файлами в папке js
+//Основной таск
+gulp.task('watch', ['browser-sync', 'lint'], function() {
+  gulp.watch('src/less/**/*.less', ['less']);
+  gulp.watch('src/pug/**/*.pug', ['pug']);
+  gulp.watch('src/js/main.js', ['lint']);
+  gulp.watch('src/*.html', browserSync.reload);
+  gulp.watch('src/css/*.css', browserSync.reload);
+  gulp.watch('src/js/**/*.js', browserSync.reload);
 });
 
+//Удаляние папки build перед выгрузкой
 gulp.task('clean', function() {
-  return del.sync('build');           // Удаляем папку build перед сборкой
+  return del.sync('build');
 });
 
+//Оптимиация изображений
 gulp.task('img', function() {
-  return gulp.src('src/img/*.*')      // Берем все изображения из src/img
-    .pipe(cache(imagemin({          // Сжимаем их с наилучшими настройками с учетом кеширования
+  return gulp.src('src/img/*.*')
+    .pipe(cache(imagemin({
       interlaced: true,
       progressive: true,
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant()]
   })))
-    .pipe(gulp.dest('build/img'));  // Выгружаем на продакшен
+    .pipe(gulp.dest('build/img'));
 });
 
+//Выгружаем проект в build
 gulp.task('build', ['clean', 'img', 'less', 'scripts'], function() {
 
-  var buildCss = gulp.src([           // Переносим библиотеки в продакшен
+  var buildCss = gulp.src([ 
       'src/css/*.css',
       ])
   .pipe(gulp.dest('build/css'))
 
-  var buildFonts = gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
+  var buildFonts = gulp.src('src/fonts/**/*')
   .pipe(gulp.dest('build/fonts'))
 
-  var buildJs = gulp.src('src/js/**/*') // Переносим скрипты в продакшен
+  var buildJs = gulp.src('src/js/**/*')
   .pipe(gulp.dest('build/js'))
 
-  var buildHtml = gulp.src('src/*.html') // Переносим HTML в продакшен
+  var buildHtml = gulp.src('src/*.html')
   .pipe(gulp.dest('build'));
 
 });
 
+//Читка кэша
 gulp.task('clear', function () {
   return cache.clearAll();
 })
 
 gulp.task('default', ['watch']);
 
-
+//Генератор  примесей для адаптивной сетки(Flex)
 gulp.task('smartgrid', function () {
     var settings = {
     outputStyle: 'less',
