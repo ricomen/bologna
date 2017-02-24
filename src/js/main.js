@@ -9,6 +9,7 @@
   mainNavToggle.addEventListener("click", function(e) {
     e.preventDefault();
     mainNav.classList.toggle("main-nav--closed");
+    mainNavToggle.classList.toggle("main-nav__toggle--close");
   });
   
   mainNav.classList.remove('main-nav--nojs');
@@ -61,7 +62,7 @@
     }
   };
 
-  $('.slider-slider').slick({
+  $('.slider').slick({
     dots: true,
     infinite: true,
     speed: 300,
