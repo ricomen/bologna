@@ -38,8 +38,8 @@ header.page-header
           a.main-nav__link(href="#") Contact
   
     .search
-      form.search__form
-        input.search__form-field(action="/" method="GET")
+      form.search__form(action="/" method="GET")
+        input.search__form-field(type="text" name="search")
         button.search__form-btn(type="submit")
           +icon("search", 15)
   .slider
