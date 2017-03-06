@@ -463,14 +463,14 @@ template {
   font-weight: 700;
   font-style: normal;
 
-  src: url("../fonts/Rufina/Rufina-Bold.woff") format("woff"), url("../fonts/Rufina/Rufina-Bold.woff2") format("woff2");
+  src: url("../fonts/Rufina/rufina-rold.woff") format("woff"), url("../fonts/Rufina/rufina-rold.woff2") format("woff2");
 }
 @font-face {
   font-family: "Rufina";
   font-weight: 400;
   font-style: normal;
 
-  src: url("../fonts/Rufina/Rufina-Regular.woff") format("woff"), url("../fonts/Rufina/Rufina-Regular.woff2") format("woff2");
+  src: url("../fonts/Rufina/rufina-regular.woff") format("woff"), url("../fonts/Rufina/rufina-regular.woff2") format("woff2");
 }
 html {
   font-size: 16px;
