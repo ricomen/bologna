@@ -1,4 +1,3 @@
-"use strict";
 (function(){
   var instaRectangle = document.querySelector(".instagram__img--rectangle");
   var instaBig = document.querySelector(".instagram__img--big");
